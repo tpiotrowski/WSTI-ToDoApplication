@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Web.Api.Models"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Web.Common", "TaskManager.Web.Common\TaskManager.Web.Common.csproj", "{A5851A8B-380D-48D8-9A1E-1A3EA675FF1F}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TaskManager.Database", "TaskManager.Database\TaskManager.Database.sqlproj", "{8A210EEE-B812-478C-8EED-98E1DF7E1C75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,12 @@ Global
 		{A5851A8B-380D-48D8-9A1E-1A3EA675FF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5851A8B-380D-48D8-9A1E-1A3EA675FF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5851A8B-380D-48D8-9A1E-1A3EA675FF1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A210EEE-B812-478C-8EED-98E1DF7E1C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A210EEE-B812-478C-8EED-98E1DF7E1C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A210EEE-B812-478C-8EED-98E1DF7E1C75}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8A210EEE-B812-478C-8EED-98E1DF7E1C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A210EEE-B812-478C-8EED-98E1DF7E1C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A210EEE-B812-478C-8EED-98E1DF7E1C75}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
