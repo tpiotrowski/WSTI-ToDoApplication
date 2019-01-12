@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿
 using TaskManager.Common.TypeMapping;
+using TaskManager.Data.Exceptions;
 using TaskManager.Data.QueryProcessors;
+using TaskManager.Web.Api.Models;
 
 namespace TaskManager.Web.Api.InquiryProcessing
 {
@@ -22,7 +24,12 @@ namespace TaskManager.Web.Api.InquiryProcessing
 
         public Task GetTaskById(long taskId)
         {
-            throw new System.NotImplementedException();
+            var taskById = _queryProcessor.GetTaskById(taskId);
+
+            if(taskById == null) throw  new RootObjectNotFoundException("Tas not found");
+
+            var task = _autoMapper.Map<Task>(taskById);
+            return task;
         }
     }
 }
