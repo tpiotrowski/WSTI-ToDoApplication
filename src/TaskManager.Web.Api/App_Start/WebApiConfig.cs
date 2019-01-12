@@ -1,4 +1,5 @@
-﻿using TaskManager.Common.Logging;
+﻿using System.Net.Http.Headers;
+using TaskManager.Common.Logging;
 using TaskManager.Web.Common;
 using TaskManager.Web.Common.ErrorHandling;
 using TaskManager.Web.Common.Routing;
@@ -26,6 +27,7 @@ namespace TaskManager.Web.Api
             config.Services.Add(typeof(IExceptionLogger),
                 new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
             config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
+           
             config.EnableCors();
         }
     }

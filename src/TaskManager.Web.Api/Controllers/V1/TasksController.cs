@@ -2,6 +2,7 @@
 using System.Web.Http;
 using TaskManager.Common;
 using TaskManager.Data.QueryProcessors;
+using TaskManager.Web.Api.InquiryProcessing;
 using TaskManager.Web.Api.Models;
 using TaskManager.Web.Common.Routing;
 
@@ -9,21 +10,23 @@ namespace TaskManager.Web.Api.Controllers.V1
 {
     [ApiVersion1RoutePrefix("tasks")]
     [Authorize(Roles = Constants.RoleNames.User)]
+    
     public class TasksController : ApiController
     {
-        private readonly ITaskByIdQueryProcessor _taskByIdQueryProcessor;
+        private readonly ITaskByIdInquiryProcessor _taskByIdInquiryProcessor;
 
-        public TasksController(ITaskByIdQueryProcessor taskByIdQueryProcessor)
+
+        public TasksController(ITaskByIdInquiryProcessor taskByIdInquiryProcessor)
         {
-            _taskByIdQueryProcessor = taskByIdQueryProcessor;
+            _taskByIdInquiryProcessor = taskByIdInquiryProcessor;
         }
 
-        // GET
+        [Route("{id:long}", Name = "GetTaskRoute")]
         public IHttpActionResult Get(long id)
         {
-            var taskById = _taskByIdQueryProcessor.GetTaskById(id);
+            var taskById = _taskByIdInquiryProcessor.GetTaskById(id);
 
-            return NotFound();
+            return Ok(taskById);
         }
     }
 }

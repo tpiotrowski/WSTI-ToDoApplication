@@ -10,7 +10,9 @@ using TaskManager.Common;
 using TaskManager.Common.Logging;
 using TaskManager.Common.Security;
 using TaskManager.Common.TypeMapping;
+using TaskManager.Data.QueryProcessors;
 using TaskManager.Data.SqlServer.Mapping;
+using TaskManager.Data.SqlServer.QueryProcessors;
 using TaskManager.Web.Api.InquiryProcessing;
 using TaskManager.Web.Api.LinkServices;
 using TaskManager.Web.Api.Security;
@@ -39,6 +41,10 @@ namespace TaskManager.Web.Api.App_Start
             container.Bind<IUpdateablePropertyDetector>().To<JObjectUpdateablePropertyDetector>().InSingletonScope();
             container.Bind<IPagedDataRequestFactory>().To<PagedDataRequestFactory>().InSingletonScope();
             container.Bind<ICommonLinkService>().To<CommonLinkService>().InRequestScope();
+
+            container.Bind<ITaskByIdQueryProcessor>().To<TaskByIdQueryProcessor>().InRequestScope();
+            container.Bind<ITaskByIdInquiryProcessor>().To<TaskByIdInquiryProcessor>().InRequestScope();
+
         }
 
         private void ConfigureLog4net(IKernel container)
