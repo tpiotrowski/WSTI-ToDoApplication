@@ -54,6 +54,7 @@ namespace TaskManager.Data
 
             var totalPageCount = (totalItemCount + pageSize - 1) / pageSize;
             return totalPageCount;
+
         }
     }
 }
