@@ -3,7 +3,7 @@
 	[TaskId] BIGINT IDENTITY(1,1) NOT NULL, 
     [Subject] NVARCHAR(30) NOT NULL, 
     [StartDate] DATETIME2 NOT NULL, 
-    [Date] NCHAR(10) NULL, 
+    [DueDate] NCHAR(10) NULL, 
     [CompletedDate] NCHAR(10) NULL, 
     [StatusId] BIGINT NOT NULL, 
     [CreatedDate] DATETIME2 NULL, 

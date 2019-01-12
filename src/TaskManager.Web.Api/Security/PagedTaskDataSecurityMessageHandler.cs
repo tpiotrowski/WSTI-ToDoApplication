@@ -6,7 +6,7 @@ using TaskManager.Common;
 using TaskManager.Common.Logging;
 using TaskManager.Common.Security;
 using TaskManager.Web.Api.Models;
-//using Task = TaskManager.Web.Api.Models.Task;
+using Task = TaskManager.Web.Api.Models.Task;
 
 namespace TaskManager.Web.Api.Security
 {

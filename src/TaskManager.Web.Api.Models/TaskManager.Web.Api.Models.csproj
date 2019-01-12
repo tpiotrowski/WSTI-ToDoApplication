@@ -7,8 +7,8 @@
     <ProjectGuid>{BDA3A2EB-DB3B-4630-A83B-8D33582DFD48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RldsApp2.Api.Models</RootNamespace>
-    <AssemblyName>RldsApp2.Web.Api.Models</AssemblyName>
+    <RootNamespace>TaskManager.Web.Api.Models</RootNamespace>
+    <AssemblyName>TaskManager.Web.Api.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,6 +46,10 @@
     <Compile Include="Link.cs" />
     <Compile Include="PagedDataInquiryResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="NewTask.cs" />
+    <Compile Include="Task.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

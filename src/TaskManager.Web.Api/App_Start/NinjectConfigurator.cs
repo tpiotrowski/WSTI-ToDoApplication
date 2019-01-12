@@ -16,6 +16,7 @@ using TaskManager.Web.Api.LinkServices;
 using TaskManager.Web.Api.Security;
 using TaskManager.Web.Common;
 using TaskManager.Web.Common.Security;
+using TaskManager.Web.Api.AutoMappingConfiguration;
 
 namespace TaskManager.Web.Api.App_Start
 {
@@ -50,16 +51,16 @@ namespace TaskManager.Web.Api.App_Start
 
         private void ConfigureNHibernate(IKernel container)
         {
-            //var sessionFactory = Fluently.Configure()
-            //    .Database(MsSqlConfiguration.MsSql2012.ConnectionString(c => c.FromConnectionStringWithKey("TaskManagerDb")))
-            //    .CurrentSessionContext("web")
-            //    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TaskMap>())
-            //    .BuildSessionFactory();
+			var sessionFactory = Fluently.Configure()
+				.Database(MsSqlConfiguration.MsSql2012.ConnectionString(c => c.FromConnectionStringWithKey("TaskManagerDb")))
+				.CurrentSessionContext("web")
+				.Mappings(m => m.FluentMappings.AddFromAssemblyOf<TaskMap>())
+				.BuildSessionFactory();
 
-            //container.Bind<ISessionFactory>().ToConstant(sessionFactory);
-            //container.Bind<ISession>().ToMethod(CreateSession).InRequestScope();
-            //container.Bind<IActionTransactionHelper>().To<ActionTransactionHelper>();
-        }
+			container.Bind<ISessionFactory>().ToConstant(sessionFactory);
+			container.Bind<ISession>().ToMethod(CreateSession).InRequestScope();
+			container.Bind<IActionTransactionHelper>().To<ActionTransactionHelper>();
+		}
 
         private ISession CreateSession(IContext context)
         {
@@ -84,6 +85,35 @@ namespace TaskManager.Web.Api.App_Start
         private void ConfigureAutoMapper(IKernel container)
         {
             container.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
-        }
+
+			// Status
+			container.Bind<IAutoMapperTypeConfigurator>()
+				.To<StatusToStatusEntityAutoMapperTypeConfigurator>()
+				.InSingletonScope();
+
+			container.Bind<IAutoMapperTypeConfigurator>()
+				.To<StatusEntityToStatusAutoMapperTypeConfigurator>()
+				.InSingletonScope();
+
+
+			// User
+			container.Bind<IAutoMapperTypeConfigurator>()
+				.To<UserToUserEntityAutoMapperTypeConfigurator>()
+				.InSingletonScope();
+
+			container.Bind<IAutoMapperTypeConfigurator>()
+				.To<UserEntityToUserAutoMapperTypeConfigurator>()
+				.InSingletonScope();
+
+
+			// Task
+			container.Bind<IAutoMapperTypeConfigurator>()
+				.To<NewTaskToTaskEntityAutoMapperTypeConfigurator>()
+				.InSingletonScope();
+
+			container.Bind<IAutoMapperTypeConfigurator>()
+				.To<TaskEntityToTaskAutoMapperTypeConfigurator>()
+				.InSingletonScope();
+		}
     }
 }

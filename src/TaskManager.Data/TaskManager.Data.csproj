@@ -7,8 +7,8 @@
     <ProjectGuid>{C504E101-9735-4122-A168-C84EDA1C5879}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RldsApp2.Data</RootNamespace>
-    <AssemblyName>RldsApp2.Data</AssemblyName>
+    <RootNamespace>TaskManager.Data</RootNamespace>
+    <AssemblyName>TaskManager.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Status.cs" />
+    <Compile Include="Entities\Task.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="PagedDataRequest.cs" />
     <Compile Include="Entities\IVersionedEntity.cs" />
     <Compile Include="Exceptions\ChildObjectNotFoundException.cs" />
