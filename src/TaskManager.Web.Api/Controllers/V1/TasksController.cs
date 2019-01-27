@@ -29,4 +29,26 @@ namespace TaskManager.Web.Api.Controllers.V1
             return Ok(taskById);
         }
     }
+
+    [ApiVersion1RoutePrefix("users")]
+    [Authorize(Roles = Constants.RoleNames.User)]
+
+    public class UserController : ApiController
+    {
+        private readonly IUserByIdInquiryProcessor _taskByIdInquiryProcessor;
+
+
+        public UserController(IUserByIdInquiryProcessor taskByIdInquiryProcessor)
+        {
+            _taskByIdInquiryProcessor = taskByIdInquiryProcessor;
+        }
+
+        [Route("{id:long}", Name = "GetUserRoute")]
+        public IHttpActionResult Get(long id)
+        {
+            var taskById = _taskByIdInquiryProcessor.GeUserById(id);
+
+            return Ok(taskById);
+        }
+    }
 }

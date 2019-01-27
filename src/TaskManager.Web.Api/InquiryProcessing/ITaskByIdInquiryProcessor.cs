@@ -32,4 +32,32 @@ namespace TaskManager.Web.Api.InquiryProcessing
             return task;
         }
     }
+
+    public interface IUserByIdInquiryProcessor
+    {
+        User GeUserById(long userId);
+    }
+
+    class UserByIdInquiryProcessor : IUserByIdInquiryProcessor
+    {
+        private readonly IAutoMapper _autoMapper;
+        private readonly IUserByIdQueryProcessor _queryProcessor;
+
+        public UserByIdInquiryProcessor(IAutoMapper autoMapper, IUserByIdQueryProcessor queryProcessor)
+        {
+            _autoMapper = autoMapper;
+            _queryProcessor = queryProcessor;
+        }
+
+        public User GeUserById(long userId)
+        {
+            var userById = _queryProcessor.GetUserById(userId);
+
+            if (userById == null) throw new RootObjectNotFoundException("User not found");
+
+            var user = _autoMapper.Map<User>(userById);
+
+            return user;
+        }
+    }
 }

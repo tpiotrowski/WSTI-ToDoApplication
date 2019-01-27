@@ -6,4 +6,11 @@ namespace TaskManager.Data.QueryProcessors
     {
         Task GetTaskById(long id);
     }
+
+    public interface IUserByIdQueryProcessor
+    {
+        User GetUserById(long id);
+    }
+
+    
 }
